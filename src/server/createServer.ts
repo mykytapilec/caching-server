@@ -1,9 +1,9 @@
 import http from 'http';
+import { proxyRequest } from '../proxy/proxyRequest';
 
-export const createServer = (port: number) => {
+export const createServer = (port: number, origin: string) => {
   const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Proxy server is running');
+    proxyRequest(req, res, origin);
   });
 
   server.listen(port, () => {
