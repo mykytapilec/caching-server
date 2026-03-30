@@ -1,20 +1,8 @@
-const args = process.argv.slice(2);
-
-let port = 3000;
-let origin = '';
-
-for (let i = 0; i < args.length; i++) {
-  if (args[i] === '--port') {
-    port = Number(args[i + 1]);
-  }
-
-  if (args[i] === '--origin') {
-    origin = args[i + 1];
-  }
-}
+const port = Number(process.env.PORT) || 3000;
+const origin = process.env.ORIGIN || '';
 
 if (!origin) {
-  console.error('Error: --origin is required');
+  console.error('Error: ORIGIN environment variable is required');
   process.exit(1);
 }
 
