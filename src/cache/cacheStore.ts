@@ -5,8 +5,7 @@ type CacheEntry = {
   timestamp: number;
 };
 
-const cache = new Map<string, CacheEntry>();
-
+export const cache = new Map<string, CacheEntry>();
 const TTL = 60 * 1000;
 
 export const getCache = (key: string): CacheEntry | undefined => {
